@@ -10,7 +10,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html <?php language_attributes();?>>
 
 <head>
   <meta charset="utf-8">
@@ -21,13 +21,14 @@
   <?php wp_head();?>
 </head>
 
-<body class="blog">
+<body <?php body_class();?>>
 
   <div id="top-navigation">
     <div class="container">
       <div class="row justify-content-end">
         <div class="col-md-6">
-          <nav class="main-menu">
+
+          <!-- <nav class="main-menu">
             <ul class="top-menu d-flex flex-row navigation top-menu justify-content-end list-unstyled">
               <li class="menu-item"><a href="index.html">Home</a></li>
 
@@ -54,7 +55,20 @@
               <li class="menu-item"><a href="index.html">Contact</a></li>
               <li class="menu-item special-menu"><a href="index.html">Join</a></li>
             </ul>
-          </nav>
+          </nav> -->
+
+          <?php
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'primary', // as registered in functions.php
+                    'depth' => 3, // as we set up in our CSS
+                    'container' => 'nav', // html wrapper of the menu ul
+                    'container_class' => 'main-menu', // wrapper class
+                    'menu_class' => 'top-menu d-flex flex-row navigation top-menu justify-content-end list-unstyled', // classes of the menu ul tag
+                    'fallback_cb' => false, // if primary menu is not created, then show nothing
+                )
+            );
+          ?>
 
           <button type="button" class="navbar-open">
             <i class="mobile-nav-toggler flaticon flaticon-menu"></i>
