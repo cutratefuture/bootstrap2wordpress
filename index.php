@@ -12,12 +12,10 @@ get_template_part('template-parts/banner', 'title');
                   // are there any posts in the DB?
                   if (have_posts()) {
                       while (have_posts()) {
-
                           the_post();
                           get_template_part('template-parts/content', 'excerpt');
-
                       }
-
+                      b2w_pagination();
                   } else {
                       get_template_part('template-parts/content', 'none');
                   }
