@@ -26,4 +26,4 @@ get_template_part('template-parts/banner', 'title');
     </div>
 </div>
 
-<?php get_footer();?>
+<?php get_footer();
